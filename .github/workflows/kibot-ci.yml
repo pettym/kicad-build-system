@@ -36,9 +36,9 @@ jobs:
         mv ./build/gerber-files/jlcpcb-gerber.zip ./build/gerber-files/${{ env.GERBERS_JLCPCB }}.zip
    
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: artifacts-${{github.sha}}
+        #name: artifacts-${{github.sha}}
         path: ./build
         if-no-files-found: error
         
