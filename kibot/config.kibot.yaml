@@ -86,7 +86,7 @@ outputs:
           dest: "/"
 
       move_files: true
-      output: "jlcpcb-gerber-${{GITHUB_SHA}}.zip"
+      output: "jlcpcb-gerber.zip"
     
 
   ################
@@ -116,14 +116,14 @@ outputs:
   # Generate Previews #
   #####################
 
-  # - name: 'Preview Front'
-  #   comment: "preview_front"
-  #   type: pcbdraw
-  #   dir: thumbnails
-  #   options:
-  #     format: png
-  #     bottom: false
-  #     output: "front.png"
+  - name: 'Preview Front'
+    comment: "preview_front"
+    type: pcbdraw
+    dir: thumbnails
+    options:
+      format: png
+      bottom: false
+      output: "front.png"
 
   # - name: 'Preview Back'
   #   comment: "preview_back"
