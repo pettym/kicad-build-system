@@ -22,21 +22,25 @@ jobs:
   KiBotImageCache:
     runs-on: ubuntu-latest
     steps:
-      - name: Restore MySQL Image Cache if it exists
-        id: cache-docker-kicad6
-        uses: actions/cache@v3
-        with:
-          path: ci/cache/docker/cache-docker-kicad6
-          key: cache-docker-kicad6
 
-      - name: Update cache-docker-kicad6 Image Cache if cache miss
-        if: steps.cache-docker-kicad6.outputs.cache-hit != 'true'
-        run: docker pull ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 && mkdir -p ci/cache/docker/kicad6_auto_full && docker image save ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 --output ./ci/cache/docker/kicad6_auto_full/kicad6.tar
+    - name: checkout
+      uses: actions/checkout@v4
+      
+    - name: Restore cache-docker-kicad6 Image Cache if it exists
+      id: cache-docker-kicad6
+      uses: actions/cache@v3
+      with:
+        path: ci/cache/docker/cache-docker-kicad6
+        key: cache-docker-kicad6
 
-      - name: Use cache-docker-kicad6 Image Cache if cache hit
-        if: steps.cache-docker-kicad6.outputs.cache-hit == 'true'
-        run: docker image load --input ./ci/cache/docker/kicad6_auto_full/kicad6.tar
+    - name: Update cache-docker-kicad6 Image Cache if cache miss
+      if: steps.cache-docker-kicad6.outputs.cache-hit != 'true'
+      run: docker pull ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 && mkdir -p ci/cache/docker/kicad6_auto_full && docker image save ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 --output ./ci/cache/docker/kicad6_auto_full/kicad6.tar
 
+    - name: Use cache-docker-kicad6 Image Cache if cache hit
+      if: steps.cache-docker-kicad6.outputs.cache-hit == 'true'
+      run: docker image load --input ./ci/cache/docker/kicad6_auto_full/kicad6.tar
+        
       # - name: Start containers
       #   run: docker compose up -d
 
