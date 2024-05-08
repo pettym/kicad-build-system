@@ -86,7 +86,7 @@ outputs:
           dest: "/"
 
       move_files: true
-      output: "jlcpcb-gerber.zip"
+      output: "jlcpcb-gerber-${{GITHUB_SHA}}.zip"
     
 
   ################
