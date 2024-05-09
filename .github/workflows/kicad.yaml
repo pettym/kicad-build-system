@@ -2,6 +2,8 @@ name: "Kicad"
 
 on:
   workflow_call:
+    inputs:
+      tags:
 
   push:
     paths:
@@ -43,7 +45,7 @@ jobs:
     - name: KiBot
       run: >-
         kibot
-        --plot-config $GITHUB_WORKSPACE/kicad-build-system/kibot/config.kibot.yaml
+        --plot-config kicad-build-system/kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
 
