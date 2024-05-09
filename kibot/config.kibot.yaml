@@ -4,9 +4,11 @@ kibot:
 
 global:
   environment:
+    # third_party:
     extra_os:
       - name: NONDISTRIB
         value: nondistrib-pcb-library
+
 
 preflight:
    run_erc: false
@@ -28,7 +30,7 @@ preflight:
 
 import:
   - output-jlcpcb-gerbers.yaml
-#  - output-thumbnails.yaml
+  - output-thumbnails.yaml
 
 # outputs:
   ################
