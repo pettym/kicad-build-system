@@ -42,7 +42,7 @@ jobs:
 
     - name: Debug
       env:
-        TEST: ${{ github.workflow_ref }}
+        TEST: ${{ github.action_ref }}
       run: "echo $TEST"
 
     # - name: Kibot
