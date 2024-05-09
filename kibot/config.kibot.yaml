@@ -4,7 +4,7 @@ kibot:
 
 global:
   # Restore project after running kibot
-  retore_project: true
+  restore_project: true
 
   use_os_env_for_expand: true
 
