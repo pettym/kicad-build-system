@@ -60,5 +60,5 @@ outputs:
           dest: "/"
 
       move_files: true
-      output: "${GERBER_FILE_JLCPCB:=gerber-jlcpcb.zip}"
+      output: "gerber-jlcpcb.zip"
 
