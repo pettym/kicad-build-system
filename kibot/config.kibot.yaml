@@ -8,7 +8,7 @@ global:
 
   use_os_env_for_expand: true
 
-  variant: "varient"
+  #variant: "varient"
   
   environment:
     # third_party:
