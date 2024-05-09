@@ -40,10 +40,10 @@ jobs:
     - name: KiBot
       run: >-
         kibot
-        --verbose
         --plot-config kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
+#--verbose
 #--config-outs
 #--start $path
 
