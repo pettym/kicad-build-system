@@ -7,14 +7,14 @@ on:
         required: true
         type: string
 
+env:
+  FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
+  GERBER_FILE_JLCPCB: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
       
 jobs:
   KiBot:
     runs-on: ubuntu-latest
     container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
-    env:
-      FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
-      GERBER_FILE_JLCPCB: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
     steps:
 
     - name: checkout repo
@@ -51,16 +51,16 @@ jobs:
         path: ./build
         if-no-files-found: error
         
-    # - name: Build Tagged Release
-    #   uses: softprops/action-gh-release@v1
-    #   if: startsWith(github.ref, 'refs/tags/')
-    #   with:
-    #     tag_name: ${{ github.ref_name }}
-    #     files: |
-    #       ./build/gerber-files/${{ env.GERBER_FILE_JLCPCB }}
-    #       ./build/thumbnails/front.png
-    #       ./build/thumbnails/back.png
-    #     body: |
-    #       ![Front](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/front.png)
-    #       ![Back](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/back.png)
+    - name: Build Tagged Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        tag_name: ${{ github.ref_name }}
+        files: |
+          ./build/gerber-files/${{ env.GERBER_FILE_JLCPCB }}
+          ./build/thumbnails/front.png
+          ./build/thumbnails/back.png
+        body: |
+          ![Front](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/front.png)
+          ![Back](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/back.png)
 
