@@ -37,7 +37,7 @@ jobs:
 
     - name: DEBUG
       run: >-
-        ls
+        ls && find kicad-build-system
 
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
