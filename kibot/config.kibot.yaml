@@ -88,6 +88,27 @@ outputs:
       move_files: true
       output: "jlcpcb-gerber.zip"
     
+  #####################
+  # Generate Previews #
+  #####################
+
+  - name: 'Preview Front'
+    comment: "preview_front"
+    type: pcbdraw
+    dir: thumbnails
+    options:
+      format: png
+      bottom: false
+      output: "front.png"
+
+  # - name: 'Preview Back'
+  #   comment: "preview_back"
+  #   type: pcbdraw
+  #   dir: thumbnails
+  #   options:
+  #     format: png
+  #     bottom: true
+  #     output: "back.png"
 
   ################
   # Generate BOM #
@@ -111,27 +132,3 @@ outputs:
   #   comment: "KiCad Cost"
   #   type: kicost
   #   dir: bom
-
-  #####################
-  # Generate Previews #
-  #####################
-
-  - name: 'Preview Front'
-    comment: "preview_front"
-    type: pcbdraw
-    dir: thumbnails
-    options:
-      format: png
-      bottom: false
-      output: "front.png"
-
-  # - name: 'Preview Back'
-  #   comment: "preview_back"
-  #   type: pcbdraw
-  #   dir: thumbnails
-  #   options:
-  #     format: png
-  #     bottom: true
-  #     output: "back.png"
-
-  

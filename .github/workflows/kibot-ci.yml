@@ -18,10 +18,31 @@ on:
 env:
   GERBERS_JLCPCB: jlcpcb-gerber-${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
       
-jobs:  
+jobs:
+  cache:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Cache
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: cache
+        key: foobar.txt
+
+    - name: Cache Miss
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: echo "this is the value" > cache/foobar.txt
+
+    - name: Use Cache
+      run: cat cache/foobar.txt
+
   KiBot:
     runs-on: ubuntu-latest
     container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+    needs: cache
     steps:
       
     - name: checkout
