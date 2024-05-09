@@ -41,9 +41,6 @@ preflight:
        command: date +"%B %d, %Y"
        #command: date +"%Y-%m-%d"
 
-    - name: "TESTVAR"
-      command: echo "this_is_a_thing.zip"
-
 import:
   - output-jlcpcb-gerbers.yaml
   - output-thumbnails.yaml

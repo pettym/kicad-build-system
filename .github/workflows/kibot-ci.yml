@@ -14,7 +14,7 @@ on:
       - 'main'
 env:
   FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
-  JLCPCB_GERBER_FILE: jlcpcb-gerber-${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}.zip
+  JLCPCB_GERBER_FILE: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
       
 jobs:
   KiBot:
