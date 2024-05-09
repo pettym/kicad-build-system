@@ -45,12 +45,13 @@ jobs:
         config: kibot/config.kibot.yaml
         dir: build
 
-    # - name: KiBot
-    #   run: >-
-    #     kibot
-    #     --plot-config kicad-build-system/kibot/config.kibot.yaml
-    #     --out-dir build
-    #     --no-auto-download
+    - name: KiBot
+      container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+      run: >-
+        kibot
+        --plot-config kicad-build-system/kibot/config.kibot.yaml
+        --out-dir build
+        --no-auto-download
 
     # - name: Upload Artifacts
     #   uses: actions/upload-artifact@v4
