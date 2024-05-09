@@ -1,0 +1,18 @@
+outputs:
+  - name: 'Preview Front'
+    comment: "preview_front"
+    type: pcbdraw
+    dir: thumbnails
+    options:
+      format: png
+      bottom: false
+      output: "front.png"
+
+  - name: 'Preview Back'
+    comment: "preview_back"
+    type: pcbdraw
+    dir: thumbnails
+    options:
+      format: png
+      bottom: true
+      output: "back.png"
