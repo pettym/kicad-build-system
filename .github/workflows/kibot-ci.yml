@@ -35,7 +35,9 @@ jobs:
     - name: Cache Miss
       if: steps.cache.outputs.cache-hit != 'true'
       id: cache
-      run: echo "this is the value"
+      run: |
+        echo "this is the value"
+      shell: bash
 
     # - name: Save Cache
     #   uses: actions/cache/save@v4
