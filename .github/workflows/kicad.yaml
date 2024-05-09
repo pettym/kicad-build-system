@@ -34,12 +34,6 @@ jobs:
       
     - name: checkout repo
       uses: actions/checkout@v4
-      with:
-        path: target
-
-    - name: DEBUG
-      run: >-
-        find .
 
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
@@ -50,7 +44,7 @@ jobs:
     - name: KiBot
       run: >-
         kibot
-        --plot-config kicad-build-system/kibot/config.kibot.yaml
+        --plot-config kicad-build-system/kicad-build-system/kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
 
