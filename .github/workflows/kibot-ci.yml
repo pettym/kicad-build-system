@@ -13,7 +13,7 @@ on:
       - 'master'
       - 'main'
 env:
-  GERBER_JLCPCB: jlcpcb-gerber-${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
+  JLCPCB_GERBER_FILE: jlcpcb-gerber-${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}.zip
       
 jobs:
   KiBot:
@@ -48,7 +48,7 @@ jobs:
 
     # - name: rename gerber file
     #   run: |        
-    #     mv ./build/gerber-files/jlcpcb-gerber.zip ./build/gerber-files/${{ env.GERBER_JLCPCB }}.zip
+    #     mv ./build/gerber-files/jlcpcb-gerber.zip ./build/gerber-files/${{ env.JLCPCB_GERBER_FILE }}.zip
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
@@ -63,7 +63,7 @@ jobs:
       with:
         tag_name: ${{ github.ref_name }}
         files: |
-          ./build/gerber-files/${{ env.GERBER_JLCPCB }}.zip
+          ./build/gerber-files/${{ env.JLCPCB_GERBER_FILE }}
           ./build/thumbnails/front.png
           ./build/thumbnails/back.png
         body: |
