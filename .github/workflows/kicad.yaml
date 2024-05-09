@@ -32,7 +32,7 @@ jobs:
       with:
         repository: 'pettym/kicad-build-system'
         ref: 'build-system'
-        path: '~/.'
+        path: "${{ github.workspace }}/kicad-build-system"
       
     - name: checkout repo
       uses: actions/checkout@v4
