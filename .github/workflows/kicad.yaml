@@ -30,7 +30,8 @@ jobs:
 
     - name: checkout repo
       uses: actions/checkout@v4
-      path: target
+      with:
+        path: target
 
     - name: checkout kidcad-build-system
       uses: actions/checkout@v4
