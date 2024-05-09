@@ -28,7 +28,7 @@ preflight:
 
 import:
   - output-jlcpcb-gerbers.yaml
-#  - output-thumbnails.yaml
+  - output-thumbnails.yaml
 
 # outputs:
   ################
