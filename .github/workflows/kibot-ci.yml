@@ -9,54 +9,13 @@ on:
     tags:
       - '*'
 
-    # Will this cause tags to not work also??
-    branches-ignore:
-      - 'master'
-      - 'main'
-      
-
 env:
   GERBERS_JLCPCB: jlcpcb-gerber-${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
       
 jobs:
-  cache:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Cache
-      uses: actions/cache@v4
-      id: cache
-      with:
-        path: kidcad6_auto_full.tar
-        key: cache_foobar
-
-    - name: Cache Miss
-      if: steps.cache.outputs.cache-hit != 'true'
-      id: hmm
-      run: |
-        docker pull ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 && \
-        echo "Saving tar file..." && \
-        docker save ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 --output kidcad6_auto_full.tar
-      shell: bash
-
-    - name: Update Cache
-      if: steps.cache.outputs.cache-hit != 'true'
-      uses: actions/cache/save@v4
-      with:
-        path: kidcad6_auto_full.tar
-        key: cache_foobar
-
-    - name: Load Cache
-      if: steps.cache.outputs.cache-hit == 'true'
-      run: |
-        docker load < kidcad6_auto_full.tar
-
   KiBot:
     runs-on: ubuntu-latest
     container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
-    needs: cache
     steps:
       
     - name: checkout
