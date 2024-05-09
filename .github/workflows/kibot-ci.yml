@@ -27,10 +27,10 @@ jobs:
         submodules: recursive
         token: '${{ secrets.PAT_TOKEN }}'
 
-    - name: KiBot Example Config
-      run: >-
-        kibot
-        --example
+    # - name: KiBot Example Config
+    #   run: >-
+    #     kibot
+    #     --example
 
     # - name: KiBot Generated Makefile
     #   run: >-
