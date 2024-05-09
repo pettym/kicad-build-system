@@ -60,5 +60,5 @@ outputs:
           dest: "/"
 
       move_files: true
-      output: "${JLCPCB_GERBER_FILE}"
+      output: "${TESTVAR}"
 
