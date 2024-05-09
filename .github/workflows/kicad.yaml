@@ -3,17 +3,17 @@ name: "Kicad"
 on:
   workflow_call:
 
-  push:
-    paths:
-      - '**/*' # TODO: remove this
-      - '**/*.kicad*'
-      - '**/*.kibot.yaml'
-      - '**/kibot-ci.yml'
-    tags:
-      - '*'
-    branches-ignore:
-      - 'master'
-      - 'main'
+  # push:
+  #   paths:
+  #     - '**/*' # TODO: remove this
+  #     - '**/*.kicad*'
+  #     - '**/*.kibot.yaml'
+  #     - '**/kibot-ci.yml'
+  #   tags:
+  #     - '*'
+  #   branches-ignore:
+  #     - 'master'
+  #     - 'main'
 
 env:
   FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
