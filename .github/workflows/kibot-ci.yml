@@ -41,7 +41,7 @@ jobs:
         docker save ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 --output kidcad6_auto_full.tar
       shell: bash
 
-    - name: Save Cache
+    - name: Update Cache
       if: steps.cache.outputs.cache-hit != 'true'
       uses: actions/cache/save@v4
       with:
@@ -53,40 +53,40 @@ jobs:
       run: |
         docker load < kidcad6_auto_full.tar
 
-  # KiBot:
-  #   runs-on: ubuntu-latest
-  #   container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
-  #   needs: cache
-  #   steps:
+  KiBot:
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+    needs: cache
+    steps:
       
-  #   - name: checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       submodules: recursive
-  #       # token: '${{ secrets.PAT_TOKEN }}'
+    - name: checkout
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        # token: '${{ secrets.PAT_TOKEN }}'
 
-  #   - name: KiBot
-  #     run: |
-  #       kibot -d build -c kibot/config.kibot.yaml && \
-  #       mv ./build/gerber-files/jlcpcb-gerber.zip ./build/gerber-files/${{ env.GERBERS_JLCPCB }}.zip
+    - name: KiBot
+      run: |
+        kibot -d build -c kibot/config.kibot.yaml && \
+        mv ./build/gerber-files/jlcpcb-gerber.zip ./build/gerber-files/${{ env.GERBERS_JLCPCB }}.zip
    
-  #   - name: Upload Artifacts
-  #     uses: actions/upload-artifact@v4
-  #     with:
-  #       name: artifacts-${{github.sha}}
-  #       path: ./build
-  #       if-no-files-found: error
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: artifacts-${{github.sha}}
+        path: ./build
+        if-no-files-found: error
         
-  #   - name: Build Tagged Release
-  #     uses: softprops/action-gh-release@v1
-  #     if: startsWith(github.ref, 'refs/tags/')
-  #     with:
-  #       tag_name: ${{ github.ref_name }}
-  #       files: |
-  #         ./build/gerber-files/${{ env.GERBERS_JLCPCB }}.zip
-  #         ./build/thumbnails/front.png
-  #         ./build/thumbnails/back.png
-  #       body: |
-  #         ![Front](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/front.png)
-  #         ![Back](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/back.png)
+    - name: Build Tagged Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        tag_name: ${{ github.ref_name }}
+        files: |
+          ./build/gerber-files/${{ env.GERBERS_JLCPCB }}.zip
+          ./build/thumbnails/front.png
+          ./build/thumbnails/back.png
+        body: |
+          ![Front](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/front.png)
+          ![Back](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/back.png)
 
