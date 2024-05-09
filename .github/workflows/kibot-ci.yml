@@ -27,6 +27,7 @@ jobs:
 
     - name: Cache
       uses: actions/cache@v4
+      id: cache
       with:
         path: kidcad6_auto_full.tar
         key: cache_foobar
