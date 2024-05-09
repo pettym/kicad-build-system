@@ -33,7 +33,7 @@ jobs:
 
     - name: KiBot Example Config
       run: >-
-        ls
+        pwd ~/
 
     - name: KiBot Example Config
       run: >-
