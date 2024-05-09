@@ -42,12 +42,7 @@ jobs:
 
     - name: Debug
       env:
-        TEST: ${{ toJson(github.event) }}
-      run: "echo $TEST"
-
-    - name: Debug
-      env:
-        TEST: ${{ toJson(github.run_id) }}
+        TEST: ${{ github.workflow_ref }}
       run: "echo $TEST"
 
     # - name: Kibot
