@@ -60,4 +60,6 @@ outputs:
           dest: "/"
 
       move_files: true
-      output: "jlcpcb-gerber.zip"
+      output: "jlcpcb-${GITHUB_REF_NAME}.zip"
+#      output: "jlcpcb-gerber.zip"
+
