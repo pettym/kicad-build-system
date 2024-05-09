@@ -43,7 +43,9 @@ jobs:
         --plot-config kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
-        --start ./test-project
+
+#--board-file ./test-project/test.kicad_pcb
+#--schematic ./test-project/test.kicad_sch
 #--verbose
 #--config-outs
 #--start $path
