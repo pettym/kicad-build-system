@@ -24,6 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
     steps:
+     
+    - name: checkout repo
+      uses: actions/checkout@v4
 
     - name: checkout kidcad-build-system
       uses: actions/checkout@v4
@@ -31,9 +34,6 @@ jobs:
         repository: pettym/kicad-build-system
         ref: "build-system"
         path: kicad-build-system
-      
-    - name: checkout repo
-      uses: actions/checkout@v4
 
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
