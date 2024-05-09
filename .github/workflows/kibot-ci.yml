@@ -31,11 +31,6 @@ jobs:
     #   run: >-
     #     kibot
     #     --example
-
-    # - name: KiBot Generated Makefile
-    #   run: >-
-    #     kibot
-    #     --makefile generated-makefile
         
     - name: KiBot
       run: >-

@@ -3,6 +3,13 @@ kibot:
   version: 1
 
 global:
+  # Restore project after running kibot
+  retore_project: true
+
+  use_os_env_for_expand: true
+
+  variant: "varient"
+  
   environment:
     # third_party:
     extra_os:
