@@ -43,7 +43,7 @@ jobs:
         --plot-config kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
-        --start test-project
+        --start ./test-project
 #--verbose
 #--config-outs
 #--start $path
