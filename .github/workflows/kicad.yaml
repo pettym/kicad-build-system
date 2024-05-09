@@ -41,7 +41,9 @@ jobs:
         path: kicad-build-system
 
     - name: Debug
-      run: "echo ${{ toJson(github) }}"
+      env:
+        TEST: ${{ toJson(github) }}
+      run: "echo $TEST"
 
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
