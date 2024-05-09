@@ -22,7 +22,7 @@ env:
 jobs:
   KiBot:
     runs-on: ubuntu-latest
-    #container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
     steps:
 
     - name: checkout kidcad-build-system
@@ -39,14 +39,13 @@ jobs:
       run: >-
         ls
 
-    - name: Kibot
-      uses: INTI-CMNB/KiBot@v2
-      with:
-        config: kibot/config.kibot.yaml
-        dir: build
+    # - name: Kibot
+    #   uses: INTI-CMNB/KiBot@v2
+    #   with:
+    #     config: kibot/config.kibot.yaml
+    #     dir: build
 
     - name: KiBot
-      container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
       run: >-
         kibot
         --plot-config kicad-build-system/kibot/config.kibot.yaml
