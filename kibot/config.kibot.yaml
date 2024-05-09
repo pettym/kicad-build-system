@@ -5,18 +5,7 @@ kibot:
 global:
   # Restore project after running kibot
   restore_project: true
-
-  use_os_env_for_expand: true
-
-  #variant: "varient"
   
-  environment:
-    # third_party:
-    extra_os:
-      - name: NONDISTRIB
-        value: nondistrib-pcb-library
-
-
 preflight:
    run_erc: false
    run_drc: false
@@ -27,21 +16,19 @@ preflight:
    check_zone_fills: true
    fill_zones: true
    
-   
-
-   
    set_text_variables:
      - name: repo
        command: echo "${GITHUB_REPOSITORY}" | awk -F / '{ print $NF }'
 
      - name: version
-       command: echo "${VERSION:=${GITHUB_REF_NAME:=no_version}}"
+       command: echo "${BOARD_VERSION:=${GITHUB_REF_NAME:=no_version}}"
 
+       # TODO: use atime from pcb file?
+       # If we run pipelines later on this will not be accurate!
      - name: date
        command: date +"%B %d, %Y"
-       #command: date +"%Y-%m-%d"
 
 import:
-  - output-jlcpcb-gerbers.yaml
+  - output-jlcpcb-gerbers.yaml # Uses $GERBER_FILE_JLCPCB for output file
   - output-thumbnails.yaml
 

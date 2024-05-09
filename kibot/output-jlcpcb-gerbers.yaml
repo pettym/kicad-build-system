@@ -60,6 +60,5 @@ outputs:
           dest: "/"
 
       move_files: true
-      output: "${FAKEVAR:=gerber-jlcpcb.zip}"
-      #output: "${JLCPCB_GERBER_FILE}"
+      output: "${GERBER_FILE_JLCPCB:=gerber-jlcpcb.zip}"
 

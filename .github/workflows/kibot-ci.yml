@@ -14,7 +14,7 @@ on:
       - 'main'
 env:
   FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
-  JLCPCB_GERBER_FILE: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
+  GERBER_FILE_JLCPCB: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
       
 jobs:
   KiBot:
@@ -51,7 +51,7 @@ jobs:
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: artifacts-${{github.sha}}
+        name: artifacts-${{github.sha}}-${{github.ref_name}}
         path: ./build
         if-no-files-found: error
         
@@ -61,7 +61,7 @@ jobs:
       with:
         tag_name: ${{ github.ref_name }}
         files: |
-          ./build/gerber-files/${{ env.JLCPCB_GERBER_FILE }}
+          ./build/gerber-files/${{ env.GERBER_FILE_JLCPCB }}
           ./build/thumbnails/front.png
           ./build/thumbnails/back.png
         body: |
