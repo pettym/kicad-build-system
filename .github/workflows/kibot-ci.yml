@@ -34,6 +34,8 @@ jobs:
         mv example* build/.
         
     - name: KiBot
+      env:
+        JLCPCB_GERBER_FILE: "${{ env.JLCPCB_GERBER_FILE }}"
       run: >-
         kibot
         --plot-config kibot/config.kibot.yaml
@@ -46,9 +48,6 @@ jobs:
 #--config-outs
 #--start $path
 
-    # - name: rename gerber file
-    #   run: |        
-    #     mv ./build/gerber-files/jlcpcb-gerber.zip ./build/gerber-files/${{ env.JLCPCB_GERBER_FILE }}.zip
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4

@@ -20,9 +20,15 @@ global:
 preflight:
    run_erc: false
    run_drc: false
-   update_xml: true
-   check_zone_fills: true
    ignore_unconnected: false
+   update_xml: true
+
+   # TODO: what is the difference between check_zone_fills and fill_zones?
+   check_zone_fills: true
+   fill_zones: true
+   
+   
+
    
    set_text_variables:
      - name: repo
