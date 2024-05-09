@@ -30,5 +30,5 @@ preflight:
 
 import:
   - output-jlcpcb-gerbers.yaml # Uses $GERBER_FILE_JLCPCB for output file
-  - output-thumbnails.yaml
+#  - output-thumbnails.yaml
 
