@@ -9,7 +9,9 @@ on:
       - '**/kibot-ci.yml'
     tags:
       - '*'
-
+    branches-ignore:
+      - 'master'
+      - 'main'
 env:
   GERBERS_JLCPCB: jlcpcb-gerber-${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
       
