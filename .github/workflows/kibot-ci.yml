@@ -26,7 +26,6 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Cache
-      # id: cache
       uses: actions/cache@v4
       with:
         path: kidcad6_auto_full.tar
@@ -37,6 +36,7 @@ jobs:
       id: hmm
       run: |
         docker pull ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 && \
+        echo "Saving tar file..." && \
         docker save ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 --output kidcad6_auto_full.tar
       shell: bash
 
