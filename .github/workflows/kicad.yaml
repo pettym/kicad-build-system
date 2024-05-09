@@ -25,7 +25,7 @@ env:
 jobs:
   KiBot:
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+#    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
     steps:
 
     - name: checkout repo
@@ -41,7 +41,7 @@ jobs:
         path: kicad-build-system
 
     - name: Debug
-      run: echo ${{ inputs }}
+      run: echo ${{ github }}
 
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
