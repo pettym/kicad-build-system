@@ -36,7 +36,8 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: echo "this is the value" > foobar.txt
 
-    - uses: actions/cache/save@v3
+    - name: Save Cache
+      uses: actions/cache/save@v3
       id: cache
       with:
         path: foobar.txt
