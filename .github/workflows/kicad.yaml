@@ -2,8 +2,6 @@ name: "Kicad"
 
 on:
   workflow_call:
-    inputs:
-      tags:
 
   push:
     paths:
