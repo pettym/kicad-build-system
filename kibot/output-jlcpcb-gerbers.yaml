@@ -60,6 +60,5 @@ outputs:
           dest: "/"
 
       move_files: true
-      output: "jlcpcb-${GITHUB_REF_NAME}.zip"
-#      output: "jlcpcb-gerber.zip"
+      output: "${FAKEVAR:=jlcpcb-gerber.zip}""
 
