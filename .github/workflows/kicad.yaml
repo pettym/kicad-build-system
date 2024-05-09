@@ -30,7 +30,7 @@ jobs:
       with:
         repository: pettym/kicad-build-system
         ref: "build-system"
-        path: "../kicad-build-system"
+        path: kicad-build-system
       
     - name: checkout repo
       uses: actions/checkout@v4
