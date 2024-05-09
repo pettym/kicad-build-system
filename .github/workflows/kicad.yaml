@@ -1,6 +1,11 @@
-name: "KiBot"
+name: "Kicad"
 
 on:
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
   push:
     paths:
       - '**/*' # TODO: remove this
@@ -12,6 +17,7 @@ on:
     branches-ignore:
       - 'master'
       - 'main'
+
 env:
   FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
   GERBER_FILE_JLCPCB: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
