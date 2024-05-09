@@ -24,12 +24,12 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
     steps:
-      
-    - name: checkout
+
+    - name: checkout repo
       uses: actions/checkout@v4
-      # with:
-      #   submodules: recursive
-      #   token: '${{ secrets.PAT_TOKEN }}'
+      with:
+        submodules: recursive
+        token: '${{ secrets.PAT_TOKEN }}'
 
     - name: KiBot Example Config
       run: >-
@@ -41,12 +41,12 @@ jobs:
         mkdir build &&
         mv example* build/.
         
-    # - name: KiBot
-    #   run: >-
-    #     kibot
-    #     --plot-config kibot/config.kibot.yaml
-    #     --out-dir build
-    #     --no-auto-download
+    - name: KiBot
+      run: >-
+        kibot
+        --plot-config $GITHUB_WORKSPACE/kicad-build-system/kibot/config.kibot.yaml
+        --out-dir build
+        --no-auto-download
 
     # - name: Upload Artifacts
     #   uses: actions/upload-artifact@v4
