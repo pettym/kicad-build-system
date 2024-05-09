@@ -7,8 +7,7 @@ global:
     extra_os:
       - name: NONDISTRIB
         value: nondistrib-pcb-library
-  
-  
+
 preflight:
    run_erc: false
    run_drc: false
@@ -29,7 +28,7 @@ preflight:
 
 import:
   - output-jlcpcb-gerbers.yaml
-  - output-thumbnails.yaml
+#  - output-thumbnails.yaml
 
 # outputs:
   ################
