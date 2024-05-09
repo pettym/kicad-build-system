@@ -34,7 +34,14 @@ jobs:
 
     - name: Cache Miss
       if: steps.cache.outputs.cache-hit != 'true'
-      run: echo "this is the value" > cache/foobar.txt
+      run: echo "this is the value" > foobar.txt
+
+    - uses: actions/cache/save@v3
+      id: cache
+      if: steps.cache.outputs.cache-hit != 'true'
+      with:
+        path: cache
+        key: footbar.txt
 
     - name: Use Cache
       run: cat cache/foobar.txt
