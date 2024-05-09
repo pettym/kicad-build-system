@@ -29,22 +29,22 @@ jobs:
       id: cache
       uses: actions/cache@v4
       with:
-        path: cache
-        key: foobar.txt
+        path: foobar.txt
+        key: cache_foobar
 
-    # - name: Cache Miss
-    #   if: steps.cache.outputs.cache-hit != 'true'
-    #   run: echo "this is the value" > foobar.txt
+    - name: Cache Miss
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: echo "this is the value" > foobar.txt
 
-    # - uses: actions/cache/save@v3
-    #   id: cache
-    #   if: steps.cache.outputs.cache-hit != 'true'
-    #   with:
-    #     path: cache
-    #     key: footbar.txt
+    - uses: actions/cache/save@v3
+      id: cache
+      if: steps.cache.outputs.cache-hit != 'true'
+      with:
+        path: foobar.txt
+        key: cache_foobar
 
-    - name: Use Cache
-      run: cat cache/foobar.txt
+    # - name: Use Cache
+    #   run: cat cache
 
   KiBot:
     runs-on: ubuntu-latest
