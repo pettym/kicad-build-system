@@ -13,6 +13,7 @@ on:
       - 'master'
       - 'main'
 env:
+  FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
   JLCPCB_GERBER_FILE: jlcpcb-gerber-${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}.zip
       
 jobs:
@@ -34,8 +35,6 @@ jobs:
         mv example* build/.
         
     - name: KiBot
-      env:
-        JLCPCB_GERBER_FILE: "${{ env.JLCPCB_GERBER_FILE }}"
       run: >-
         kibot
         --plot-config kibot/config.kibot.yaml
