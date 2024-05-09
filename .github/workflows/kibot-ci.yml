@@ -39,12 +39,12 @@ jobs:
         echo "this is the value"
       shell: bash
 
-    # - name: Save Cache
-    #   uses: actions/cache/save@v4
-    #   id: cache
-    #   with:
-    #     path: foobar.txt
-    #     key: cache_foobar
+    - name: Save Cache
+      uses: actions/cache/save@v4
+      # id: cache
+      with:
+        path: foobar.txt
+        key: cache_foobar
 
     # - name: Use Cache
     #   run: cat cache
