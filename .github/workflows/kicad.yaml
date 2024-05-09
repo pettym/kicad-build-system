@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       ref:
-        required: false
+        required: true
         type: string
   # push:
   #   paths:
@@ -42,7 +42,7 @@ jobs:
 
     - name: Debug
       env:
-        TEST: ${{ github.action_ref }}
+        TEST: ${{ inputs.ref }}
       run: "echo $TEST"
 
     # - name: Kibot
