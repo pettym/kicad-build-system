@@ -30,14 +30,12 @@ jobs:
     - name: checkout kidcad-build-system
       uses: actions/checkout@v4
       with:
-        repository: 'pettym/kicad-build-system'
-        ref: 'build-system'
-        path: "${{ github.workspace }}/kicad-build-system"
+        repository: pettym/kicad-build-system
+        ref: "build-system"
+        path: "../kicad-build-system"
       
     - name: checkout repo
       uses: actions/checkout@v4
-      with:
-        submodules: recursive
 
     - name: DEBUG
       run: >-
@@ -52,7 +50,7 @@ jobs:
     - name: KiBot
       run: >-
         kibot
-        --plot-config kicad-build-system/kibot/config.kibot.yaml
+        --plot-config ../kicad-build-system/kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
 
