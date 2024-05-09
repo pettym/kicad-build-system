@@ -29,25 +29,28 @@ jobs:
       # id: cache
       uses: actions/cache@v4
       with:
-        path: foobar.txt
+        path: kidcad6_auto_full.tar
         key: cache_foobar
 
     - name: Cache Miss
       if: steps.cache.outputs.cache-hit != 'true'
       id: hmm
       run: |
-        echo "this is the value" > foobar.txt
+        docker pull ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 && \
+        docker save ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3 --output kidcad6_auto_full.tar
       shell: bash
 
     - name: Save Cache
+      if: steps.cache.outputs.cache-hit != 'true'
       uses: actions/cache/save@v4
-      # id: cache
       with:
-        path: foobar.txt
+        path: kidcad6_auto_full.tar
         key: cache_foobar
 
-    # - name: Use Cache
-    #   run: cat cache
+    - name: Load Cache
+      if: steps.cache.outputs.cache-hit == 'true'
+      run: |
+        docker load kidcad6_auto_full.tar
 
   # KiBot:
   #   runs-on: ubuntu-latest
