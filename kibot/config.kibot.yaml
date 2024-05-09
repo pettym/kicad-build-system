@@ -21,7 +21,7 @@ preflight:
        #command: date +"%Y-%m-%d"
 
 import:
-  - kibot/output-jclpcb-gerbers.yaml
+  - output-jclpcb-gerbers.yaml
   - output-thumbnails.yaml
 
 # outputs:
