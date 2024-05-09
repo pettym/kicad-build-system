@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         submodules: recursive
-        token: '${{ seccrets.PCB_LIB_DEPLOY_KEY }}'
+        token: '${{ secrets.PCB_LIB_DEPLOY_KEY }}'
         # token: '${{ secrets.PAT_TOKEN }}'
 
     - name: KiBot
