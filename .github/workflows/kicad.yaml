@@ -41,37 +41,30 @@ jobs:
         mkdir build &&
         mv example* build/.
         
-    - name: KiBot
-      run: >-
-        kibot
-        --plot-config kibot/config.kibot.yaml
-        --out-dir build
-        --no-auto-download
+    # - name: KiBot
+    #   run: >-
+    #     kibot
+    #     --plot-config kibot/config.kibot.yaml
+    #     --out-dir build
+    #     --no-auto-download
 
-#--board-file ./test-project/test.kicad_pcb
-#--schematic ./test-project/test.kicad_sch
-#--verbose
-#--config-outs
-#--start $path
-
-
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: artifacts-${{github.sha}}-${{github.ref_name}}
-        path: ./build
-        if-no-files-found: error
+    # - name: Upload Artifacts
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: artifacts-${{github.sha}}-${{github.ref_name}}
+    #     path: ./build
+    #     if-no-files-found: error
         
-    - name: Build Tagged Release
-      uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        tag_name: ${{ github.ref_name }}
-        files: |
-          ./build/gerber-files/${{ env.GERBER_FILE_JLCPCB }}
-          ./build/thumbnails/front.png
-          ./build/thumbnails/back.png
-        body: |
-          ![Front](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/front.png)
-          ![Back](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/back.png)
+    # - name: Build Tagged Release
+    #   uses: softprops/action-gh-release@v1
+    #   if: startsWith(github.ref, 'refs/tags/')
+    #   with:
+    #     tag_name: ${{ github.ref_name }}
+    #     files: |
+    #       ./build/gerber-files/${{ env.GERBER_FILE_JLCPCB }}
+    #       ./build/thumbnails/front.png
+    #       ./build/thumbnails/back.png
+    #     body: |
+    #       ![Front](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/front.png)
+    #       ![Back](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/back.png)
 
