@@ -45,7 +45,7 @@ jobs:
         --out-dir build
         --no-auto-download
         --config-outs
-        #--start $path
+#--start $path
 
     - name: rename gerber file
       run: |        
