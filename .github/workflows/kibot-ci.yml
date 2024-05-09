@@ -51,7 +51,7 @@ jobs:
     - name: Load Cache
       if: steps.cache.outputs.cache-hit == 'true'
       run: |
-        docker load kidcad6_auto_full.tar
+        docker load < kidcad6_auto_full.tar
 
   # KiBot:
   #   runs-on: ubuntu-latest
