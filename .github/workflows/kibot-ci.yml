@@ -29,9 +29,21 @@ jobs:
 
       
     - name: KiBot
-      run: |
-        kibot -d build -c kibot/config.kibot.yaml && \
+      run: >-
+        kibot
+        --verbose
+        --plot-config kibot/config.kibot.yaml
+        --out-dir build
+        --no-auto-download
+
+    - name: rename gerber file
+      run: |        
         mv ./build/gerber-files/jlcpcb-gerber.zip ./build/gerber-files/${{ env.GERBERS_JLCPCB }}.zip
+
+    - name: KiBot Example Config
+      run: >-
+        kibot
+        --example
    
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
