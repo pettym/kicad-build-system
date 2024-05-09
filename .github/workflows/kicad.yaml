@@ -27,14 +27,21 @@ jobs:
     container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
     steps:
 
+    - name: checkout kidcad-build-system
+      uses: actions/checkout@v4
+      with:
+        repository: 'pettym/kicad-build-system'
+        ref: 'build-system'
+        path: '~/.'
+      
     - name: checkout repo
       uses: actions/checkout@v4
       with:
         submodules: recursive
 
-    - name: KiBot Example Config
+    - name: DEBUG
       run: >-
-        pwd ~/
+        pwd ~/ && ls ~/
 
     - name: KiBot Example Config
       run: >-
