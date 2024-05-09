@@ -44,7 +44,7 @@ jobs:
         --plot-config kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
-        --config-outs
+#--config-outs
 #--start $path
 
     - name: rename gerber file

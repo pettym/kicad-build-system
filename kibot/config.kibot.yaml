@@ -1,6 +1,13 @@
 kibot:
   #https://github.com/skorokithakis/KiBot
   version: 1
+
+global:
+  environment:
+    extra_os:
+      - name: NONDISTRIB
+        value: nondistrib-pcb-library
+  
   
 preflight:
    run_erc: false
