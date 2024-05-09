@@ -20,11 +20,9 @@ env:
   GERBER_FILE_JLCPCB: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
       
 jobs:
-  KiBot:
+  Checkout:
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
     steps:
-     
     - name: checkout repo
       uses: actions/checkout@v4
 
@@ -35,6 +33,13 @@ jobs:
         ref: "build-system"
         path: kicad-build-system
 
+  
+  KiBot:
+    needs: Checkout
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+    steps:
+     
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
     #   with:
@@ -44,7 +49,7 @@ jobs:
     - name: KiBot
       run: >-
         kibot
-        --plot-config kicad-build-system/kicad-build-system/kibot/config.kibot.yaml
+        --plot-config kicad-build-system/kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
 
