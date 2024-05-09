@@ -3,29 +3,18 @@ name: "Kicad"
 on:
   workflow_call:
     inputs:
-      ref:
+      build-system-ref:
         required: true
         type: string
-  # push:
-  #   paths:
-  #     - '**/*' # TODO: remove this
-  #     - '**/*.kicad*'
-  #     - '**/*.kibot.yaml'
-  #     - '**/kibot-ci.yml'
-  #   tags:
-  #     - '*'
-  #   branches-ignore:
-  #     - 'master'
-  #     - 'main'
 
-env:
-  FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
-  GERBER_FILE_JLCPCB: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
       
 jobs:
   KiBot:
     runs-on: ubuntu-latest
-#    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+    env:
+      FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
+      GERBER_FILE_JLCPCB: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
     steps:
 
     - name: checkout repo
@@ -37,13 +26,8 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: pettym/kicad-build-system
-        ref: "build-system"
+        ref: ${{ inputs.build-system-ref }}
         path: kicad-build-system
-
-    - name: Debug
-      env:
-        TEST: ${{ inputs.ref }}
-      run: "echo $TEST"
 
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
@@ -53,17 +37,19 @@ jobs:
 
     - name: KiBot
       run: >-
-        cd target && kibot
+        mkdir build &&
+        cd target &&
+        kibot
         --plot-config ../kicad-build-system/kibot/config.kibot.yaml
-        --out-dir build
+        --out-dir ../build
         --no-auto-download
 
-    # - name: Upload Artifacts
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: artifacts-${{github.sha}}-${{github.ref_name}}
-    #     path: ./build
-    #     if-no-files-found: error
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: artifacts-${{github.sha}}-${{github.ref_name}}
+        path: ./build
+        if-no-files-found: error
         
     # - name: Build Tagged Release
     #   uses: softprops/action-gh-release@v1
