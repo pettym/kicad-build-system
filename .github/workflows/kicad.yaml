@@ -33,6 +33,10 @@ jobs:
 
     - name: KiBot Example Config
       run: >-
+        ls
+
+    - name: KiBot Example Config
+      run: >-
         kibot --example &&
         mkdir build &&
         mv example* build/.
