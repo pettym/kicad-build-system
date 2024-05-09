@@ -2,7 +2,9 @@ name: "Kicad"
 
 on:
   workflow_call:
-
+    inputs:
+      ref:
+        type: string
   # push:
   #   paths:
   #     - '**/*' # TODO: remove this
@@ -36,11 +38,12 @@ jobs:
         ref: "build-system"
         path: kicad-build-system
 
+    - name: Debug
+      run: echo ${{ inputs }}
 
-    - name: Test
-      run: >-
-        ls kicad-build-system && ls kicad-build-system/kibot
-        
+    - name: Debug2
+      run: echo ${{ workflow_call }}
+
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
     #   with:
