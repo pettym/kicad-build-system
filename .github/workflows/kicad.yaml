@@ -42,9 +42,6 @@ jobs:
     - name: Debug
       run: echo ${{ inputs }}
 
-    - name: Debug2
-      run: echo ${{ workflow_call }}
-
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
     #   with:
