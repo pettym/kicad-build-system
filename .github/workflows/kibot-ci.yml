@@ -27,7 +27,16 @@ jobs:
         submodules: recursive
         token: '${{ secrets.PAT_TOKEN }}'
 
-      
+    - name: KiBot Example Config
+      run: >-
+        kibot
+        --example
+
+    - name: KiBot Generated Makefile
+      run: >-
+        kibot
+        --makefile generated-makefile
+        
     - name: KiBot
       run: >-
         kibot
@@ -35,16 +44,13 @@ jobs:
         --plot-config kibot/config.kibot.yaml
         --out-dir build
         --no-auto-download
+        --config-outs
+        #--start $path
 
     - name: rename gerber file
       run: |        
         mv ./build/gerber-files/jlcpcb-gerber.zip ./build/gerber-files/${{ env.GERBERS_JLCPCB }}.zip
 
-    - name: KiBot Example Config
-      run: >-
-        kibot
-        --example
-   
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
