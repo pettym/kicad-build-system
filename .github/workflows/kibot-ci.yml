@@ -3,6 +3,7 @@ name: "KiBot"
 on:
   push:
     paths:
+      - '**/*' # TODO: remove this
       - '**/*.kicad*'
       - '**/*.kibot.yaml'
       - '**/kibot-ci.yml'
