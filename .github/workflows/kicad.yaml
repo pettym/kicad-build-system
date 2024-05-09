@@ -34,10 +34,12 @@ jobs:
       
     - name: checkout repo
       uses: actions/checkout@v4
+      with:
+        path: target
 
     - name: DEBUG
       run: >-
-        ls && find kicad-build-system
+        find .
 
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
