@@ -22,7 +22,7 @@ preflight:
        # TODO: use atime from pcb file?
        # If we run pipelines later on this will not be accurate!
      - name: date
-       command: git log -1 --format=%cd --date=format:%Y-%m-%d
+       command: "git log -1 --format=%cd --date=format:%Y-%m-%d"
 
     - name: test
       command: ls
