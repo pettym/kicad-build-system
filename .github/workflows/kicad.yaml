@@ -31,11 +31,11 @@ jobs:
 
     - name: generate config
       run: |
-        tee kibot-config.yaml << EOF
+        tee kicad-build-system/kibot/loader.yaml << EOF
         kibot:
           version: 1
         import:
-          - kicad-build-system/kibot/config.kibot.yaml
+          - config.kibot.yaml
         EOF
         
     # - name: Kibot
@@ -49,7 +49,7 @@ jobs:
         mkdir build &&
         cd target &&
         kibot
-        --plot-config ../kibot-config.yaml
+        --plot-config ../kicad-build-system/kibot/loader.yaml
         --out-dir ../build
         --no-auto-download
     
