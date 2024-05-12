@@ -30,5 +30,5 @@ preflight:
 
 import:
   - gerbers-jlcpcbs.yaml
-  - thumbnails.yaml
+  # - thumbnails.yaml
 
