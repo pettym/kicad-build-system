@@ -24,12 +24,9 @@ preflight:
     - name: date
       command: "git log -1 --format=%cd --date=format:%Y-%m-%d"
 
-    - name: test
-      command: ls
-
 import:
   # - gerbers-jlcpcb.yaml
   - thumbnails.yaml
 
-@OTHER@
+import: @OTHER@
 
