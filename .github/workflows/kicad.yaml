@@ -49,7 +49,7 @@ jobs:
         mkdir build &&
         cd target &&
         kibot
-        --plot-config ../config-loader.yaml
+        --plot-config kibot/config.kibot.yaml
         --out-dir ../build
         --no-auto-download
     
