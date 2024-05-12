@@ -1,11 +1,7 @@
 kibot:
-  #https://github.com/skorokithakis/KiBot
+  #https://github.com/INTI-CMNB/KiBot
   version: 1
-
-global:
-  # Restore project after running kibot
-#  restore_project: true
-  
+ 
 preflight:
    run_erc: false
    run_drc: false
