@@ -1,0 +1,30 @@
+kibot:
+  #https://github.com/INTI-CMNB/KiBot
+  version: 1
+ 
+preflight:
+   run_erc: true
+   run_drc: true
+   ignore_unconnected: false
+   update_xml: true
+
+   # TODO: what is the difference between check_zone_fills and fill_zones?
+   check_zone_fills: true
+   fill_zones: true
+   
+   set_text_variables:
+    - name: repo
+      command: echo "${GITHUB_REPOSITORY}" | awk -F / '{ print $NF }'
+
+    - name: version
+      command: echo "${BOARD_VERSION:=${GITHUB_REF_NAME:=no_version}}"
+
+       # TODO: use atime from pcb file?
+       # don't know if making tags will update this git log stuf
+    - name: date
+      command: "git log -1 --format=%cd --date=format:%Y-%m-%d"
+
+import:
+  - outputs/gerbers/jlcpcb.yaml
+  - outputs/thumbnails.yaml
+

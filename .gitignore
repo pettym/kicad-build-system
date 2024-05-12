@@ -1,0 +1,4 @@
+build/**
+
+*-backups/*.zip
+**/fp-info-cache

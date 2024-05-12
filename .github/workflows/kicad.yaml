@@ -1,0 +1,62 @@
+name: "Kicad"
+
+on:
+  workflow_call:
+    # inputs:
+    #   build-system-ref:
+    #     required: true
+    #     type: string
+
+env:
+  FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
+  GERBER_FILE_JLCPCB: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}-gerber-jlcpcb.zip
+      
+jobs:
+  KiBot:
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
+    steps:
+
+    - name: checkout repo
+      uses: actions/checkout@v4
+      with:
+        path: target
+
+    - name: checkout kidcad-build-system
+      uses: actions/checkout@v4
+      with:
+        repository: pettym/kicad-build-system
+        path: kicad-build-system
+        # ref: ${{ inputs.build-system-ref }}
+
+    - name: KiBot
+      run: >-
+        mkdir build &&
+        cd target &&
+        kibot
+        --plot-config ../kicad-build-system/kibot.yaml
+        --out-dir ../build
+        --no-auto-download
+
+    # TODO: handle adding repo/branch/sha info to gerber files!
+        
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: artifacts-${{github.sha}}-${{github.ref_name}}
+        path: ./build
+        if-no-files-found: error
+        
+    - name: Build Tagged Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        tag_name: ${{ github.ref_name }}
+        files: |
+          ./build/gerber-files/${{ env.GERBER_FILE_JLCPCB }}
+          ./build/thumbnails/front.png
+          ./build/thumbnails/back.png
+        body: |
+          ![Front](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/front.png)
+          ![Back](${{ github.server_url }}/${{ github.repository }}/releases/download/${{ github.ref_name }}/back.png)
+
