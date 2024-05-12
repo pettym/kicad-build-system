@@ -13,16 +13,16 @@ preflight:
    fill_zones: true
    
    set_text_variables:
-     - name: repo
-       command: echo "${GITHUB_REPOSITORY}" | awk -F / '{ print $NF }'
+    - name: repo
+      command: echo "${GITHUB_REPOSITORY}" | awk -F / '{ print $NF }'
 
-     - name: version
-       command: echo "${BOARD_VERSION:=${GITHUB_REF_NAME:=no_version}}"
+    - name: version
+      command: echo "${BOARD_VERSION:=${GITHUB_REF_NAME:=no_version}}"
 
        # TODO: use atime from pcb file?
-       # don't know if making tags will update this git log stuff or not
-     - name: date
-       command: "git log -1 --format=%cd --date=format:%Y-%m-%d"
+       # don't know if making tags will update this git log stuf
+    - name: date
+      command: "git log -1 --format=%cd --date=format:%Y-%m-%d"
 
     - name: test
       command: ls
