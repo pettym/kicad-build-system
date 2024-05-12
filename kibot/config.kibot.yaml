@@ -30,5 +30,5 @@ preflight:
 import:
   # - gerbers-jlcpcb.yaml
   - thumbnails.yaml
-  - ../../target/kibot/gerbers-jlcpcb.yaml
+  - @OTHER@
 
