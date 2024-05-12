@@ -29,21 +29,14 @@ jobs:
         ref: ${{ inputs.build-system-ref }}
         path: kicad-build-system
 
-    # - name: Kibot
-    #   uses: INTI-CMNB/KiBot@v2
-    #   with:
-    #     config: kibot/config.kibot.yaml
-    #     dir: build
-    
     - name: KiBot
       run: >-
         mkdir build &&
         cd target &&
         kibot
-        --plot-config ../kicad-build-system/kibot/config.kibot.yaml
+        --plot-config ../kicad-build-system/kibot.yaml
         --out-dir ../build
         --no-auto-download
-        -E OTHER="../../target/kibot/gerbers-jlcpcb.yaml"
 
     # TODO: handle adding repo/branch/sha info to gerber files!
         
