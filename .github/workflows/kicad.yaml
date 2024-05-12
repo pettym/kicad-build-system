@@ -41,9 +41,10 @@ jobs:
         cd target &&
         kibot
         --plot-config ../kicad-build-system/kibot/config.kibot.yaml
+        --plot-config kidbot/gerbers-jlcpcb.yaml
         --out-dir ../build
         --no-auto-download
-        -E OTHER="../../target/kibot/*"
+#        -E OTHER="../../target/kibot/*"
 
     # TODO: handle adding repo/branch/sha info to gerber files!
         
