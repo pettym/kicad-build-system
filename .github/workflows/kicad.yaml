@@ -19,9 +19,7 @@ jobs:
 
     - name: test
       run: >-
-        echo ${{ github.github_ref }};
-        ls;
-        env
+        env && cat /github/workflow/event.json
 
     - name: checkout repo
       uses: actions/checkout@v4
