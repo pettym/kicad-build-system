@@ -29,6 +29,6 @@ preflight:
        command: date +"%B %d, %Y"
 
 import:
-  - gerbers-jlcpcbs.yaml
+  - gerbers-jlcpcb.yaml
   # - thumbnails.yaml
 
