@@ -17,10 +17,6 @@ jobs:
     container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
     steps:
 
-    - name: test
-      run: >-
-        env && cat /github/workflow/event.json
-
     - name: checkout repo
       uses: actions/checkout@v4
       with:
@@ -36,9 +32,10 @@ jobs:
     - name: generate config
       run: |
         tee kibot-config.yaml << EOF
+        kibot:
+          version: 1
         import:
           - ../kicad-build-system/kibot/config.kibot.yaml
-
         EOF
         
     # - name: Kibot
