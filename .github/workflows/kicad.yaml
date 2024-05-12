@@ -29,15 +29,6 @@ jobs:
         ref: ${{ inputs.build-system-ref }}
         path: kicad-build-system
 
-    - name: generate config
-      run: |
-        tee config-loader.yaml << EOF
-        kibot:
-          version: 1
-        import:
-          - target/kibot/config.kibot.yaml
-        EOF
-        
     # - name: Kibot
     #   uses: INTI-CMNB/KiBot@v2
     #   with:
@@ -49,7 +40,7 @@ jobs:
         mkdir build &&
         cd target &&
         kibot
-        --plot-config ../config-loader.yaml
+        --plot-config ../kicad-build-system/kibot/config.kibot.yaml
         --out-dir ../build
         --no-auto-download
     
