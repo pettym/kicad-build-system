@@ -17,6 +17,10 @@ jobs:
     container: ghcr.io/inti-cmnb/kicad6_auto_full:1.6.3
     steps:
 
+    - name: test
+      run: >-
+        echo ${{ github.event_name }}
+
     - name: checkout repo
       uses: actions/checkout@v4
       with:
