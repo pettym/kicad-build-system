@@ -20,7 +20,8 @@ jobs:
     - name: test
       run: >-
         echo ${{ github.github_ref }};
-        ls
+        ls;
+        env
 
     - name: checkout repo
       uses: actions/checkout@v4
