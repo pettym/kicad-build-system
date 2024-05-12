@@ -35,7 +35,7 @@ jobs:
         kibot:
           version: 1
         import:
-          - ../kicad-build-system/kibot/config.kibot.yaml
+          - kicad-build-system/kibot/config.kibot.yaml
         EOF
         
     # - name: Kibot
