@@ -4,7 +4,7 @@ kibot:
 
 global:
   # Restore project after running kibot
-  restore_project: true
+#  restore_project: true
   
 preflight:
    run_erc: false
@@ -27,9 +27,6 @@ preflight:
        # If we run pipelines later on this will not be accurate!
      - name: date
        command: date +"%B %d, %Y"
-
-     - name: test
-       command: ls
 
 import:
   - gerbers-jlcpcb.yaml
