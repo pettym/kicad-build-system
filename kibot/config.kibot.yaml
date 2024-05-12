@@ -28,6 +28,9 @@ preflight:
      - name: date
        command: date +"%B %d, %Y"
 
+     - name: test
+       command: ls
+
 import:
   - gerbers-jlcpcb.yaml
   # - thumbnails.yaml
