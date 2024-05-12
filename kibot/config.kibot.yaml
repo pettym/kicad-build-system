@@ -28,6 +28,7 @@ preflight:
       command: ls
 
 import:
-  - gerbers-jlcpcb.yaml
+  # - gerbers-jlcpcb.yaml
   - thumbnails.yaml
+  - ../../target/kibot/gerbers-jlcpcb.yaml
 

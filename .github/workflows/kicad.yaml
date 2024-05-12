@@ -35,22 +35,13 @@ jobs:
     #     config: kibot/config.kibot.yaml
     #     dir: build
     
-    # - name: KiBot
-    #   run: >-
-    #     mkdir build &&
-    #     cd target &&
-    #     kibot
-    #     --plot-config ../kicad-build-system/kibot/config.kibot.yaml
-    #     --out-dir ../build
-    #     --no-auto-download
-    
     - name: KiBot
       run: >-
         mkdir build &&
+        cd target &&
         kibot
         --plot-config ../kicad-build-system/kibot/config.kibot.yaml
-        --out-dir build
-        --start target/.
+        --out-dir ../build
         --no-auto-download
 
     # TODO: handle adding repo/branch/sha info to gerber files!
