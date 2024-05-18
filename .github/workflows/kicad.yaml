@@ -23,7 +23,7 @@ jobs:
       with:
         repository: pettym/kicad-build-system
         path: kicad-build-system
-        ref: packages # TODO: remove this before merging
+        # ref: packages
 
     - name: KiBot
       run: >-
