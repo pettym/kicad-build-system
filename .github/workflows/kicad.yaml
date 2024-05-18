@@ -2,10 +2,6 @@ name: "Kicad"
 
 on:
   workflow_call:
-    # inputs:
-    #   build-system-ref:
-    #     required: true
-    #     type: string
 
 env:
   FULL_VERSION_ID: ${{github.event.repository.name}}-${{github.sha}}-${{github.ref_name}}
@@ -27,7 +23,7 @@ jobs:
       with:
         repository: pettym/kicad-build-system
         path: kicad-build-system
-        # ref: ${{ inputs.build-system-ref }}
+        ref: packages # TODO: remove this before merging
 
     - name: KiBot
       run: >-
